@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Formel-1 Motor — Aufbau (Demo)</title>
+  <style>
+    :root{
+      --bg:#fbfdff;
+      --card:#ffffff;
+      --muted:#555;
+      --accent:#0b63b3;
+      --mono: "Segoe UI Mono", "Roboto Mono", monospace;
+    }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg,var(--bg),#eef6ff 60%);
+      color:#111;
+      line-height:1.45;
+    }
+    header{
+      padding:2rem;
+      text-align:center;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    h1{ margin:0; font-size:1.9rem; color:var(--accent); }
+    p.lead{ margin-top:.5rem; color:var(--muted); max-width:900px; margin-left:auto; margin-right:auto; }
+
+    .container{
+      max-width:1000px;
+      margin:2rem auto;
+      padding:1rem;
+    }
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      padding:1.25rem;
+      box-shadow: 0 6px 18px rgba(20,30,50,0.06);
+      margin-bottom:1.25rem;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:1rem;
+    }
+    @media(min-width:900px){
+      .grid{ grid-template-columns: 1fr 360px; align-items:start; }
+    }
+    h2{ color:#0b4f8a; margin:0 0 .5rem 0; }
+    h3{ margin:.75rem 0 .25rem 0; color:#0b63b3; }
+    summary{ font-weight:600; cursor:pointer; }
+    details p{ margin:.4rem 0; color:var(--muted); }
+
+    .small { font-size:.9rem; color:var(--muted); }
+    .mono { font-family:var(--mono); background:#f7f9fc; padding:.15rem .35rem; border-radius:4px; }
+
+    /* SVG container */
+    .diagram { background:#f7fbff; padding:0.75rem; border-radius:8px; }
+
+    footer{ text-align:center; color:var(--muted); padding:1rem 0; font-size:.9rem; }
+    .note{ font-size:.95rem; color:#222; margin-top:.5rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Formel-1 Power Unit — Aufbau (Detailierte Erklärung)</h1>
+    <p class="lead">Diese Seite erklärt strukturiert und ausführlich, wie ein moderner Formel-1-Motor bzw. eine moderne Power Unit aufgebaut ist — intern verbaut sind Verbrennungsmotor (ICE), Turbo, ERS-Komponenten (MGU-K / MGU-H), Energiespeicher und Steuerung. </p>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <section class="card">
+        <h2>Kurzüberblick — Was ist eine „Power Unit“?</h2>
+        <p class="small">
+          Moderne Formel-1-Einheiten werden meist als <strong>Power Unit (PU)</strong> bezeichnet, weil sie aus mehreren zusammenarbeitenden Systemen bestehen:
+        </p>
+        <ul>
+          <li><strong>ICE</strong> – Internal Combustion Engine (Verbrennungsmotor, der Hauptantriebsstrang)</li>
+          <li><strong>Turbo</strong> – Abgasgetriebene Turbine + Verdichter</li>
+          <li><strong>MGU-H</strong> – Motor Generator Unit (Heat), an der Turbinenwelle</li>
+          <li><strong>MGU-K</strong> – Motor Generator Unit (Kinetic), an der Kurbelwelle / Getriebe</li>
+          <li><strong>Energy Store (ES)</strong> – Hochleistungs-Batterie</li>
+          <li><strong>Power Electronics & ECU</strong> – Steuern Fluss und Leistung</li>
+        </ul>
+
+        <h3>Wesentliche Eigenschaften</h3>
+        <p class="small">
+          Kern-Merkmal moderner Formel-1-Power-Units: sehr kompakte Bauweise, extrem hohe spezifische Leistung (Leistung pro Liter), umfangreiche Energierückgewinnung (Hybrid-System) und sehr leichte/temperaturbeständige Materialien.
+        </p>
+
+        <details open>
+          <summary>1) Internal Combustion Engine (ICE) — Aufbau</summary>
+          <p>
+            Moderne F1-Motoren sind typischerweise kompakte V-Anordnungen mit wenigen Litern Hubraum (bei aktuellen Regeln 1.6 l). Wichtige Bauteile und Eigenschaften:
+          </p>
+          <ul>
+            <li><strong>Zylinderblock & Kurbelgehäuse:</strong> Basisstruktur, gefertigt aus hochfesten Aluminium-Legierungen oder Speziallegierungen; extrem steif, geringes Gewicht.</li>
+            <li><strong>Kurbelwelle:</strong> Aus hochfestem Stahl oder Speziallegierungen, präzisionsgefertigt; überträgt die Kolbenbewegung in Drehmoment.</li>
+            <li><strong>Kolben und Pleuel:</strong> Leichtgewichtskolben (geschmiedet), Pleuel meist aus Titan oder hochfesten Stahllegierungen; auf minimale Massenträgheit optimiert.</li>
+            <li><strong>Zylinderkopf & Ventiltrieb:</strong> Doppel-Nockenwellen (DOHC) mit meist vier Ventilen pro Zylinder; anstelle von Federn werden in der Formel-1 pneumatische Ventilrückstellungen verwendet (schnellere Ventilfolge, zuverlässiger bei hohen Drehzahlen).</li>
+            <li><strong>Direkteinspritzung:</strong> Kraftstoff wird direkt in die Brennkammer eingespritzt; präzise Dosierung und Mapping über die Motorsteuerung (ECU).</li>
+            <li><strong>Schmierung:</strong> <em>Dry-sump</em> – Öl wird in einem externen Behälter gesammelt und per mehreren Pumpen verteilt; verhindert Öl-Ablagerungen bei starker Beschleunigung/Fliehkraft.</li>
+            <li><strong>Kühlung:</strong> Kompakte Kanäle, viele Wärmetauscher und gezielte Luftführung; Motor- und ERS-Komponenten haben separate Kühlkreisläufe.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>2) Turbo & MGU-H — wie Abgasenergie genutzt wird</summary>
+          <p>
+            Der Turbo besteht aus einer <em>Turbinenwelle</em> mit Turbinenrad (Abgas) und Verdichterrad (Ladedruck). Zusätzlich ist an der Turbinenwelle die MGU-H angebracht:
+          </p>
+          <ul>
+            <li><strong>Turbo:</strong> Nutzt Abgasenergie zum Komprimieren der Ansaugluft; erhöht die Luftmasse für die Verbrennung.</li>
+            <li><strong>MGU-H:</strong> Elektrischer Generator/Motor auf der Turbinenwelle: kann Energie aus dem Abgasstrom zurückgewinnen (Generator-Modus) oder Leistung zugeben (Motor-Modus), um das Verdichterrad zu beschleunigen und Turboloch zu reduzieren.</li>
+            <li><strong>Aufgaben der MGU-H:</strong> Energieerzeugung (elektrisch speichern oder direkt zur MGU-K leiten), Feinsteuerung der Turboladerdrehzahl, Reduktion von Verzögerungen beim Ladedruckaufbau.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>3) MGU-K, Energiespeicher und Leistungselektronik (ERS)</summary>
+          <p>
+            Das Hybrid-Subsystem ist zentral für moderne F1-Power-Units:
+          </p>
+          <ul>
+            <li><strong>MGU-K:</strong> Befestigt an der Kurbelwelle oder im Getriebe; wandelt beim Bremsen kinetische Energie in elektrische Energie (Generator) und kann als Elektromotor zusätzliche Antriebsleistung liefern (aus der Batterie oder direkt vom MGU-H).</li>
+            <li><strong>Energy Store (ES):</strong> Hochleistungs-Batterie (Lithium-Ion-Typ oder spez. Zellen), optimiert für sehr hohe Lade-/Entladeleistungen. Die Batterie ist gewichts- und temperaturkritisch und wird intensiv gekühlt.</li>
+            <li><strong>Leistungselektronik:</strong> Umrichter/Inverter, DC/DC-Wandler und das ECU-System steuern, wann Energie geerntet, gespeichert oder abgegeben wird. Sehr schnelle Regelung und Sicherheitslogiken sind nötig.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>4) Tank, Treibstoff & Verbrennung</summary>
+          <p>
+            F1-Treibstoff ist ein hochraffiniertes Rennbenzin; die Verbrennung wird über präzise Einspritzzeitpunkte, Luftmenge (Ladedruck) und Zündpunkt gesteuert. Die Kombination aus Turboaufladung und präziser Direkteinspritzung verbessert Energieumwandlung und Effizienz.
+          </p>
+        </details>
+
+        <details>
+          <summary>5) Getriebe, Montage & Struktur</summary>
+          <p>
+            Der Motor ist kein isoliertes Bauteil: in einem F1-Auto ist er in die Fahrzeugstruktur eingebunden.
+          </p>
+          <ul>
+            <li><strong>Stressed-Member:</strong> Die Power Unit wird häufig als „stresses member“ verwendet — sie bildet zusammen mit dem Getriebe einen Teil der hinteren Struktur, an der Aufhängung und Getriebe befestigt sind.</li>
+            <li><strong>Getriebe:</strong> Meist ein hochpräzises sequentielles Getriebe, das mit der Motorsteuerung synchronisiert wird. Schaltempfehlungen werden elektronisch gesteuert.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>6) Materialien, Fertigung und Toleranzen</summary>
+          <p>
+            F1-Komponenten verwenden Speziallegierungen (Titan, Inconel und hochfeste Stähle), Keramikbeschichtungen und zunehmend auch additive Fertigung (3D-Printing) für komplexe, leichte Bauteile. Toleranzen sind extrem eng — viele Bauteile werden nach jedem Rennen überholt oder getauscht.
+          </p>
+        </details>
+
+        <h3>Wartung & Lebensdauer</h3>
+        <p class="small">
+          Formel-1-Power-Units werden intensiv überwacht: nach jedem Einsatz werden viele Komponenten demontiert, geprüft und kalibriert. Teams legen Wert auf Rebuild-Intervalle, denn die Bauteile müssen höchstmögliche Performance bei minimalem Gewicht liefern.
+        </p>
+
+        <h3>Zusammengefasst — Funktionsfluss</h3>
+        <p class="small">
+          1. Verbrennung im ICE erzeugt Drehmoment → Getriebe/Antrieb.  
+          2. Abgas treibt den Turbo an → Verdichter erhöht Ladedruck.  
+          3. MGU-H wandelt Abgasenergie in Elektrik oder treibt Verdichter elektrisch an.  
+          4. Beim Bremsen wandelt MGU-K kinetische Energie in Elektrik (Generator) und speichert sie im ES.  
+          5. Gespeicherte Energie kann über die Leistungselektronik als Zusatzleistung abgegeben werden.
+        </p>
+      </section>
+
+      <aside class="card">
+        <h2>Grafik: Schematischer Aufbau</h2>
+        <div class="diagram">
+          <!-- Einfaches Blockdiagramm als SVG -->
+          <svg width="100%" viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematisches Diagramm einer Power Unit">
+            <style>
+              .b{fill:#e9f3ff;stroke:#9fc7ff;stroke-width:1.5; rx:6; ry:6}
+              .t{font:12px/1.2 sans-serif; fill:#063a66}
+              .arrow{stroke:#0b63b3; stroke-width:2; marker-end:url(#arrow)}
+            </style>
+
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#0b63b3"/>
+              </marker>
+            </defs>
+
+            <!-- ICE -->
+            <rect x="20" y="30" width="180" height="70" class="b"/>
+            <text x="30" y="55" class="t" font-weight="700">ICE (V6)</text>
+            <text x="30" y="72" class="t" font-size="11">Kolben, Kurbelwelle, Kopf, Ventile</text>
+
+            <!-- Turbo / MGU-H -->
+            <rect x="220" y="18" width="180" height="56" class="b"/>
+            <text x="230" y="40" class="t" font-weight="700">Turbo + MGU-H</text>
+            <text x="230" y="57" class="t" font-size="11">Turbinenwelle mit elektr. Generator</text>
+
+            <!-- MGU-K -->
+            <rect x="220" y="90" width="180" height="46" class="b"/>
+            <text x="230" y="112" class="t" font-weight="700">MGU-K</text>
+            <text x="230" y="128" class="t" font-size="11">Kinetische Energie ↔ Elektrik</text>
+
+            <!-- Battery -->
+            <rect x="120" y="150" width="180" height="56" class="b"/>
+            <text x="130" y="175" class="t" font-weight="700">Energy Store (Batterie)</text>
+            <text x="130" y="193" class="t" font-size="11">Hochleistungs-Zellen, Kühlung</text>
+
+            <!-- arrows -->
+            <line x1="200" y1="65" x2="220" y2="65" class="arrow"/>
+            <line x1="200" y1="100" x2="220" y2="110" class="arrow"/>
+            <line x1="260" y1="116" x2="300" y2="160" class="arrow"/>
+            <line x1="200" y1="185" x2="120" y2="185" class="arrow"/>
+
+            <!-- labels -->
+            <text x="10" y="115" class="t" font-size="12">Abgas → Turbo</text>
+            <text x="10" y="200" class="t" font-size="12">Bremsen → MGU-K → Batterie</text>
+          </svg>
+        </div>
+
+        <div class="note">
+          <strong>Tipp:</strong> Dieses Diagramm ist stark vereinfacht — in der Praxis sind Leitungspfade (elektrisch, Öl, Kühlung) und mechanische Verbindungen dichter und spezialisierter.
+        </div>
+      </aside>
+    </div>
+
+    <section class="card">
+      <h2>Technische Details (Vertiefung)</h2>
+
+      <details open>
+        <summary>Ventiltrieb & Materialwahl</summary>
+        <p>
+          F1-Ventiltrieb nutzt pneumatische Systeme anstelle klassischer Federn, damit bei extrem schnellen Hubzyklen (hohe Drehzahlen) saubere Ventilstellung und geringe Masse gewährleistet sind. Materialien: Titan für Pleuel/Einzelteile, Inconel und hitzebeständige Legierungen für Turbinenrad und Abgaskomponenten, Keramikbeschichtungen zur Hitzeschutzschicht.
+        </p>
+      </details>
+
+      <details>
+        <summary>Ölversorgung (Dry-Sump)</summary>
+        <p>
+          Ein Dry-Sump-System verhindert Ölstarre an Kurvenkräften und ermöglicht niedrige Motoreneinbaulagen (tiefer Schwerpunkt). Meist mehrere Pumpen (Hochdruck + mehrere Saugpumpen) + externes Ölbehälter/Tank + Öl-Kühler.
+        </p>
+      </details>
+
+      <details>
+        <summary>Elektronik & Steuerung</summary>
+        <p>
+          Die Engine Control Unit (ECU) koordiniert Verbrennung, Einspritzung, Zündung, ERS-Strategien und Schutzlogiken. Leistungselektronik regelt Spannungs-/Stromflüsse zwischen MGU-K/H und Battery. Sicherheit, Redundanz und Telemetrie sind für Rennen entscheidend.
+        </p>
+      </details>
+
+      <h3>Wie kannst du das als HTML-Demo verwenden?</h3>
+      <p class="small">
+        1. Speichere diese Datei als <span class="mono">index.html</span> in deinem Repo-Hauptordner. <br>
+        2. Committe & pushe auf GitHub. <br>
+        3. Aktiviere GitHub Pages (Settings → Pages → Source: main / root). <br>
+        4. Deine Demo-Seite zeigt dann die Erklärung und das Diagramm.
+      </p>
+
+      <p class="small"><em>Wenn du eine noch tiefergehende technische Beschreibung (z. B. CAD-Schnitte, Toleranzangaben oder exakte Materialzusammensetzungen) möchtest, kann ich das ergänzen — dann schreibe bitte, welche Tiefe (z. B. Fertigungstoleranzen, Kühlkreislauf-Spezifikationen, oder Explosionszeichnungen) du brauchst.</em></p>
+
+    </section>
+  </main>
+
+  <footer>
+    © Demo — „Dies ist eine Demoversion“ • Datei: <span class="mono">index.html</span>
+  </footer>
+</body>
+</html>
